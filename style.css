@@ -2,10 +2,36 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+
 }
 
 .bg-carr{
     background-color: rgba(255, 161, 70, 1);
 }
 
+.dhy{
+    font-family: 'Dhyana', sans-serif;
+}
+
+.secret-meniu {
+    transition: transform 0.3s ease-in-out; /* Adjust the duration and easing as needed */
+    transform: translateY(-100%); /* Initially off-screen */
+  }
+
+  .visible {
+    transform: translateY(0); /* Move the menu on-screen */
+  }
+
+  .gr{
+    background-color: rgba(38, 38, 38, 1);
+  }
+
+  .bg-y{
+    background-color: rgba(255, 245, 235, 1);
+  }
+
+  .c-y{
+    color: rgba(255, 161, 70, 1);
+  }
  
