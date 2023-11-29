@@ -145,20 +145,21 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   document.addEventListener('DOMContentLoaded', function () {
-    // Select the elements you want to animate
+  
     const userReviewsTitle = document.querySelector('.all-users');
 
-    // Create a GSAP timeline
+  
     const timeline = gsap.timeline({ paused: true });
 
-    // Add animations to the timeline
+ 
     timeline.from('.first-user', { opacity: 0, y: 50, stagger: 0.3, duration: 1 });
 
-    // Create a ScrollTrigger for the timeline
+ 
     ScrollTrigger.create({
       trigger: userReviewsTitle,
-      start: 'top 70%', // Adjust the start position as needed
+      start: 'top 70%',   
+      
       onEnter: () => timeline.play(),
-      once: true, // Play the animation only once
+      once: true,  
     });
   });
