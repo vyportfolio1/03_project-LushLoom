@@ -15,12 +15,12 @@
 }
 
 .secret-meniu {
-    transition: transform 0.3s ease-in-out; /* Adjust the duration and easing as needed */
-    transform: translateY(-100%); /* Initially off-screen */
+    transition: transform 0.3s ease-in-out;  
+    transform: translateY(-100%);  
   }
 
   .visible {
-    transform: translateY(0); /* Move the menu on-screen */
+    transform: translateY(0);  
   }
 
   .gr{
