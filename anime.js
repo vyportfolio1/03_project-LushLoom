@@ -1,19 +1,22 @@
 document.addEventListener('DOMContentLoaded', function () {
- 
-    const preloader = document.querySelector('.preloader');
-    const overlay = document.querySelector('.overlay');
-    const nav = document.querySelector('.nav');
-    const logo = document.querySelector('.logo');
 
-    const timeline = gsap.timeline();
+  const preloader = document.querySelector('.preloader');
+  const overlay = document.querySelector('.overlay');
+  const nav = document.querySelector('.nav');
+  const logo = document.querySelector('.logo');
 
-    timeline.to(overlay, { duration: 3, opacity: 0, ease: 'power2.inOut' });
-    timeline.to(preloader, { duration: 2, opacity: 0, ease: 'power4.inOut' }, '-=1.5'); 
+  const timeline = gsap.timeline({ onComplete: hidePreloader });
 
-    timeline.from(nav, { opacity: 0, duration: 1, delay: 0.5 });
-    timeline.from(logo, { opacity: 0, x: -50, duration: 1, delay: 1 });
+  timeline.to(overlay, { duration: 3, opacity: 0, ease: 'power2.inOut' });
+  timeline.to(preloader, { duration: 2, opacity: 0, ease: 'power4.inOut' }, '-=1.5');
 
- 
+  timeline.from(nav, { opacity: 0, duration: 1, delay: 0.5 });
+  timeline.from(logo, { opacity: 0, x: -50, duration: 1, delay: 1 });
+
+  function hidePreloader() {
+      preloader.style.display = 'none';
+  }
+
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -43,73 +46,71 @@ document.addEventListener('DOMContentLoaded', function () {
  
 });
 
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    gsap.registerPlugin(ScrollTrigger);
 
-    const casualCollectionTitle = document.querySelector('.casual-title');
-    const casualCollectionItems = document.querySelectorAll('.cas1');
+  // Function to play the animation
+  function playCasualAnimation() {
+      timelineCasual.play();
+  }
 
-    gsap.from(casualCollectionTitle, {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: '.casual-title',
-        start: 'top 80%',
-        end: 'bottom 20%',
-        scrub: true,
+  // Select the casual section
+  const casualSection = document.querySelector('.casual');
+  const observerCasual = new IntersectionObserver(
+      (entries) => {
+          if (entries[0].isIntersecting) {
+              playCasualAnimation();
+              observerCasual.disconnect();
+          }
       },
-    });
+      { threshold: 0.5 }
+  );
 
-    casualCollectionItems.forEach((item, index) => {
-      gsap.from(item, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: true,
-        },
-      });
-    });
+  // Observe the casual section
+  observerCasual.observe(casualSection);
+
+  // Create a timeline for the casual section
+  const timelineCasual = gsap.timeline({ paused: true });
+
+  // Animation for each item in the casual section
+  const casualItems = document.querySelectorAll('.cas1');
+  casualItems.forEach((item, index) => {
+      timelineCasual.from(item, { opacity: 0, y: 50, duration: 0.8, stagger: 0.2 }, index * 0.5);
   });
-
-  document.addEventListener('DOMContentLoaded', function () {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const sweaterTitle = document.querySelector('.txt2');
-    const sweaterImages = document.querySelectorAll('.images img');
+});
 
 
-    gsap.from(sweaterTitle, {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: '.sw',
-        start: 'top 80%',
-        end: 'bottom 20%',
-        scrub: true,
+document.addEventListener('DOMContentLoaded', function () {
+
+  // Function to play the animation
+  function playSweaterAnimation() {
+      timelineSweater.play();
+  }
+
+  // Select the sweater section
+  const sweaterSection = document.querySelector('.sw');
+  const observerSweater = new IntersectionObserver(
+      (entries) => {
+          if (entries[0].isIntersecting) {
+              playSweaterAnimation();
+              observerSweater.disconnect();
+          }
       },
-    });
+      { threshold: 0.5 }
+  );
 
- 
-    sweaterImages.forEach((image, index) => {
-      gsap.from(image, {
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        scrollTrigger: {
-          trigger: image,
-          start: 'top 80%',
-          end: 'bottom 20%',
-          scrub: true,
-        },
-      });
-    });
-  });
+  // Observe the sweater section
+  observerSweater.observe(sweaterSection);
+
+  // Create a timeline for the sweater section
+  const timelineSweater = gsap.timeline({ paused: true });
+
+  // Animation for the elements in the sweater section
+  timelineSweater.from('.txt2', { opacity: 0, y: 50, duration: 1 });
+  timelineSweater.from('.images img', { opacity: 0, y: 50, duration: 1, stagger: 0.2 });
+});
+
 
   document.addEventListener('DOMContentLoaded', function () {
  
