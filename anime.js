@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const timeline = gsap.timeline({ onComplete: hidePreloader });
 
-  timeline.to(overlay, { duration: 3, opacity: 0, ease: 'power2.inOut' });
-  timeline.to(preloader, { duration: 2, opacity: 0, ease: 'power4.inOut' }, '-=1.5');
+  timeline.to(overlay, { duration: 4, opacity: 0, ease: 'power2.inOut' });
+  timeline.to(preloader, { duration: 3, opacity: 0, ease: 'power4.inOut' }, '-=1.5');
 
-  timeline.from(nav, { opacity: 0, duration: 1, delay: 0.5 });
-  timeline.from(logo, { opacity: 0, x: -50, duration: 1, delay: 1 });
+  timeline.from(nav, { opacity: 0, duration: 1, delay: 0.2 });
+  timeline.from(logo, { opacity: 0, x: -150, duration: 0.5, delay: 0.5 });
 
   function hidePreloader() {
       preloader.style.display = 'none';
@@ -50,12 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Function to play the animation
+ 
   function playCasualAnimation() {
       timelineCasual.play();
   }
 
-  // Select the casual section
+ 
   const casualSection = document.querySelector('.casual');
   const observerCasual = new IntersectionObserver(
       (entries) => {
@@ -67,13 +67,13 @@ document.addEventListener('DOMContentLoaded', function () {
       { threshold: 0.5 }
   );
 
-  // Observe the casual section
+ 
   observerCasual.observe(casualSection);
 
-  // Create a timeline for the casual section
+ 
   const timelineCasual = gsap.timeline({ paused: true });
 
-  // Animation for each item in the casual section
+ 
   const casualItems = document.querySelectorAll('.cas1');
   casualItems.forEach((item, index) => {
       timelineCasual.from(item, { opacity: 0, y: 50, duration: 0.8, stagger: 0.2 }, index * 0.5);
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Function to play the animation
+ 
   function playSweaterAnimation() {
       timelineSweater.play();
   }
@@ -100,13 +100,13 @@ document.addEventListener('DOMContentLoaded', function () {
       { threshold: 0.5 }
   );
 
-  // Observe the sweater section
+  
   observerSweater.observe(sweaterSection);
 
-  // Create a timeline for the sweater section
+  
   const timelineSweater = gsap.timeline({ paused: true });
 
-  // Animation for the elements in the sweater section
+ 
   timelineSweater.from('.txt2', { opacity: 0, y: 50, duration: 1 });
   timelineSweater.from('.images img', { opacity: 0, y: 50, duration: 1, stagger: 0.2 });
 });
